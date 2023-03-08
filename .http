@@ -1,0 +1,12 @@
+GET http://localhost:4000/api/mangas/6407f2d56fcb5f5978809371
+Content-Type: application/json
+
+# {
+#   "title": "Attack on Titan",
+#   "author": "Hajime Isayama",
+#   "genre": "Action, Drama, Fantasy",
+#   "status": "ongoing",
+#   "rating": 9,
+#   "description": "In a world where humanity lives inside cities surrounded by enormous walls due to the Titans, gigantic humanoid creatures who devour humans seemingly without reason, a young boy joins the Survey Corps to fight against the Titans and uncover the secrets of the mysterious creatures.",
+#   "coverImage": "https://example.com/cover1.jpg"
+# }

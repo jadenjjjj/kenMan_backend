@@ -5,6 +5,7 @@ const MONGO_URI = require('./db');
 const indexRoutes = require("./routes/index.routes")
 const mangaRouter = require("./routes/manga")
 const loginRouter = require("./routes/loginRouter");
+const signupRouter = require("./routes/signupRouter");
 // ℹ️ Gets access to environment variables/settings
 // https://www.npmjs.com/package/dotenv
 require("dotenv").config();
@@ -52,6 +53,7 @@ app.use(express.json());
 app.use("/", indexRoutes);
 app.use("/api", mangaRouter);
 app.use("/api", loginRouter);
+app.use("/api", signupRouter);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

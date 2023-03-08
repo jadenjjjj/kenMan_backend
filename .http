@@ -1,20 +1,9 @@
-GET http://localhost:4000/api/profile
+GET http://localhost:4000/api/auth/google/callback
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDA4MjQwODhlNmUxYzZjMjgzMGNlNjgiLCJpYXQiOjE2NzgyNTUxMTJ9.1dVN-XD6kl2JU_Io-K2l0zKv9Tvn2yvzOtGcsjn4jJE
 
 # {
-#   "title": "Attack on Titan",
-#   "author": "Hajime Isayama",
-#   "genre": "Action, Drama, Fantasy",
-#   "status": "ongoing",
-#   "rating": 9,
-#   "description": "In a world where humanity lives inside cities surrounded by enormous walls due to the Titans, gigantic humanoid creatures who devour humans seemingly without reason, a young boy joins the Survey Corps to fight against the Titans and uncover the secrets of the mysterious creatures.",
-#   "coverImage": "https://example.com/cover1.jpg"
+#   "email": "test3@example.com",
+#   "password": "$2b$10$N7cWM6AK0M0a6bfgj5h6muM4Ruti4szLSuZhK32pVTS4/nJNytRuq"
+  
 # }
 
-
-# {
-#   "email": "test@example.com",
-#     "password": "password123",
-#     "name": "Test User"
-# }

@@ -6,6 +6,11 @@ const indexRoutes = require("./routes/index.routes")
 const mangaRouter = require("./routes/manga")
 const loginRouter = require("./routes/loginRouter");
 const signupRouter = require("./routes/signupRouter");
+const passport = require('./services/googleStrategy'); 
+const authRouter = require('./routes/authRouter');
+
+
+
 // ℹ️ Gets access to environment variables/settings
 // https://www.npmjs.com/package/dotenv
 require("dotenv").config();
@@ -29,6 +34,7 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
+app.use(passport.initialize());
 //Connect to MongoDB
 const uri = process.env.MONGO_URI;
 console.log("uri:", uri);
@@ -49,11 +55,28 @@ require("./config")(app);
 
 app.use(express.json());
 
+const session = require('express-session');
+
+
+// Add this code to use express-session middleware
+app.use(session({
+    secret: 'mysecretkey',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+  }));
+
+app.use(passport.initialize());
+app.use(passport.session());
+  
+
+
 // 👇 Start handling routes here
 app.use("/", indexRoutes);
 app.use("/api", mangaRouter);
 app.use("/api", loginRouter);
 app.use("/api", signupRouter);
+app.use("/api", authRouter);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

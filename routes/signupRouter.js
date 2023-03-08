@@ -7,7 +7,15 @@ const passport = require('../services/passport');
 
 router.post('/signup', async (req, res) => {
   try {
+
     const { email, password, name } = req.body;
+
+    // Check if a user with the same email already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      throw new Error('Email is already taken');
+    }
+    
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ email, password: hashedPassword, name });
     await user.save();

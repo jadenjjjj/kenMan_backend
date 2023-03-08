@@ -9,11 +9,13 @@ const User = require('../models/userModel');
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(email, password);
     const user = await User.findOne({ email });
+    console.log(user);
     if (!user) {
       throw new Error('Invalid credentials');
     }
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await user.comparePassword(password);
     if (!isMatch) {
       throw new Error('Invalid credentials');
     }
@@ -24,5 +26,11 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// Example protected route that requires authentication
+router.get('/protected', passport.authenticate('jwt', { session: false }), (req, res) => {
+  res.json({ message: 'You have accessed the protected route!' });
+});
+
 module.exports = router;
+
 
